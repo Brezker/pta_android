@@ -7,6 +7,7 @@
     android:background="@drawable/background_gradient"
     tools:context=".Login">
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -14,18 +15,18 @@
         android:fontFamily="@font/open_sans"
         android:text="Iniciar sesión"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.192" />
 
     <EditText
         android:id="@+id/edtNombreChec"
         style="@style/EditTextCustomStyle"
-        android:layout_width="211dp"
-        android:layout_height="47dp"
+        android:layout_width="244dp"
+        android:layout_height="51dp"
         android:drawableStart="@android:drawable/ic_lock_idle_charging"
         android:drawablePadding="6dp"
         android:drawableTint="#FFFFFF"
@@ -35,36 +36,34 @@
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301" />
-
+        app:layout_constraintVertical_bias="0.375" />
 
     <EditText
         android:id="@+id/edtPassword"
         style="@style/EditTextCustomStyle"
-        android:layout_width="211dp"
-        android:layout_height="47dp"
+        android:layout_width="244dp"
+        android:layout_height="51dp"
         android:drawableLeft="@android:drawable/ic_lock_idle_lock"
         android:hint="Contraseña"
         android:paddingRight="10px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnAccess"
+        android:layout_width="120dp"
+        android:layout_height="47dp"
         android:backgroundTint="#FFFFFF"
-        android:text="Button"
+        android:text="Acceder"
         android:textColor="#0D47A1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.657" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ class Login : AppCompatActivity() {
     }
     fun fnLogin(){
         //Toast.makeText(baseContext, binding.txtEmail.text, Toast.LENGTH_LONG).show();
-        Toast.makeText(baseContext, binding.edtPassword.text, Toast.LENGTH_LONG).show();
+        //Toast.makeText(baseContext, binding.edtPassword.text, Toast.LENGTH_LONG).show();
 
         val client = OkHttpClient()
 

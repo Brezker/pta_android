@@ -17,4 +17,12 @@
     <style name="Theme.Public_transport_android.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Public_transport_android.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Public_transport_android.ActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Public_transport_android.ActionBar.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Public_transport_android.ActionBar.PopupOverlay"
+        parent="ThemeOverlay.AppCompat.Light" />
 </resources>

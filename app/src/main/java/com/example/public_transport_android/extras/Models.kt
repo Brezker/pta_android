@@ -6,6 +6,7 @@ class Models {
         var token:String,
         var nombre:String,
         var error:String,
+        var rol:Boolean
     )
     /*data class Paciente(
         var id : Int,

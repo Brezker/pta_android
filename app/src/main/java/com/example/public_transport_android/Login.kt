@@ -1,5 +1,6 @@
 package com.example.public_transport_android
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.public_transport_android.databinding.ActivityLoginBinding
 import com.example.public_transport_android.extras.Models
+import com.example.public_transport_android.ui.Roles.Base.HomeBaseActivity
+import com.example.public_transport_android.ui.Roles.Parada.HomeParadaActivity
 import com.example.public_transport_android.ui.gallery.GalleryFragment
 import com.example.public_transport_android.ui.home.HomeFragment
 import com.example.public_transport_android.ui.home.HomeViewModel
@@ -26,9 +29,7 @@ import java.io.IOException
 private lateinit var binding: ActivityLoginBinding
 class Login : AppCompatActivity() {
 
-    /**linea añadida
-    private  lateinit var homeViewModel : HomeViewModel
-    **/
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -40,9 +41,6 @@ class Login : AppCompatActivity() {
         //val btnAccess = findViewById<Button>(R.id.btnAccess)
 
 
-        /** Inicializar HomeViewModel
-        homeViewModel =  ViewModelProvider(this).get(HomeViewModel::class.java)
-         **/
 
         binding.btnAccess.setOnClickListener {
             fnLogin()
@@ -98,18 +96,34 @@ class Login : AppCompatActivity() {
                     // Si se recibe un token, obtener el rol del usuario desde el objeto RespLogin
                     val userRole = objResp.rol
 
+                    ///Variable que obtiene a las preferencias compartidas
+                    val infoUser = getSharedPreferences("infoUser", Context.MODE_PRIVATE)
+
+                    // Edita las preferencias compartidas.
+                    infoUser.edit().apply() {
+                        // Almacena el nombre de usuario en las preferencias compartidas.
+                        putString("userName", objResp.nombre)
+
+                        // Almacena el rol de usuario en las preferencias compartidas.
+                        putString("userRole", userRole.toString())
+
+                        // Aplica los cambios en las preferencias compartidas.
+                        apply()
+                    }
+
+
                     // Verificar el rol del usuario (true o false)
                     if (userRole == true){
 
-                        /**homeViewModel.(objResp.nombre);**/
+
 
                         // Si el rol es true, redirigir a la actividad HomeActivity
-                        val intent = Intent(baseContext, HomeActivity::class.java)
+                        //val intent = Intent(baseContext, HomeActivity::class.java)
+                        val intent = Intent(baseContext, HomeBaseActivity::class.java)
                         startActivity(intent)
                     }else if (userRole == false){
-                        runOnUiThread {
-                            Toast.makeText(baseContext, "Usuario con rol 0", Toast.LENGTH_LONG).show()
-                        }
+                        val intent = Intent(baseContext, HomeParadaActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             }

@@ -8,6 +8,7 @@ class Models {
         var error:String,
         var rol:Boolean
     )
+
     /*data class Paciente(
         var id : Int,
         var nombre: String,

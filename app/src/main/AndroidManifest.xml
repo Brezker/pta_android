@@ -17,6 +17,16 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Roles.Parada.HomeParadaActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_parada"
+            android:theme="@style/Theme.Public_transport_android.ActionBar" />
+        <activity
+            android:name=".ui.Roles.Base.HomeBaseActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_base"
+            android:theme="@style/Theme.Public_transport_android.ActionBar" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"

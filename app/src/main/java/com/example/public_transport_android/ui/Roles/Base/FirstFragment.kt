@@ -39,8 +39,14 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
+        val root:View  = binding.root
 
+
+        binding.btnAAdir.setOnClickListener{
+            var navController =  findNavController()
+            navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,12 +62,15 @@ class FirstFragment : Fragment() {
         binding.btnAAdir.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 
 }

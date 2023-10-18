@@ -24,9 +24,8 @@ class Models {
         var act_inact:Boolean,
         var h_salida:String,
         var h_llegada:String,
-        var nota:String,
-        var nombreRuta: String,
-        var nombreParada: String
+        var pasa_por:String,
+        var nota:String
     )
 
     data class Parada(

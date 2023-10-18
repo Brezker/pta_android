@@ -70,6 +70,7 @@ class Login : AppCompatActivity() {
                 runOnUiThread{
                     //println(formBody.toString())
                     Toast.makeText(baseContext, "Error: " + e.message.toString(), Toast.LENGTH_LONG).show()
+                    Log.i("jackko", e.message.toString())
                 }
             }
 

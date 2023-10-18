@@ -16,7 +16,9 @@
         android:theme="@style/Theme.Public_transport_android.ActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.Roles.Base.UnidadAdapter"
+            android:exported="false" />
         <activity
             android:name=".ui.Roles.Parada.HomeParadaActivity"
             android:exported="false"

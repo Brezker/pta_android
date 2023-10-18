@@ -63,4 +63,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+
 }

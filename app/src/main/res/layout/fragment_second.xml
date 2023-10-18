@@ -1,113 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context=".SecondFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:padding="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-        <!--TextView
-            android:id="@+id/txtInfo"
-            android:layout_width="wrap_content"
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Información:"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/-->
+            android:text="Ruta:"
+            android:textSize="20sp"/>
 
-        <!-- Spinner para la selección de ruta -->
         <Spinner
             android:id="@+id/spinnerRuta"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/spinnerParada"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            />
+    </LinearLayout>
 
-        <!-- Spinner para la selección de parada -->
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parada:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
         <Spinner
             android:id="@+id/spinnerParada"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/spinnerRuta"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            />
 
-        <!-- EditText para el número -->
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Número de Unidad:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
         <EditText
-            android:id="@+id/editTextNumero"
-            android:layout_width="0dp"
+            android:id="@+id/edtNumUnidad"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Número"
-            app:layout_constraintTop_toBottomOf="@id/spinnerParada"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            android:hint="Ingrese número de la unidad"
+            />
 
-        <!-- EditText para la hora de salida -->
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hora de Salida:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
         <EditText
             android:id="@+id/editTextHoraSalida"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hora de Salida"
-            app:layout_constraintTop_toBottomOf="@id/editTextNumero"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
+            android:hint="Ingrese hora de Salida"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
             android:inputType="none"
             android:onClick="showTimePicker"/>
 
-        <!-- EditText para la hora de llegada -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hora de Llegada:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
         <EditText
             android:id="@+id/editTextHoraLlegada"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Hora de Llegada"
-            app:layout_constraintTop_toBottomOf="@id/editTextHoraSalida"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
+            android:hint="Ingrese hora de Llegada"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
             android:inputType="none"
             android:onClick="showTimePicker"
+        />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pasa Por:"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+
+        <EditText
+            android:id="@+id/edtPasaPor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese por donde pasa la unidad"
             />
 
-        <!-- EditText para "Pasa por" -->
-        <EditText
-            android:id="@+id/editTextPasaPor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Pasa por"
-            app:layout_constraintTop_toBottomOf="@id/editTextHoraLlegada"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
 
 
-        <!-- Botón de enviar -->
-        <Button
-            android:id="@+id/btnAddUnidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:text="Enviar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextPasaPor" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddUnidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_location_24"
+        android:layout_marginTop="35dp"
+
+        android:layout_gravity="end"/>
+
+
+
+    <!--Button
+        android:id="@+id/btnAddUnidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir"
+
+        android:layout_marginTop="25dp"
+        android:layout_gravity="end"
+         /-->
+
+    <!--/androidx.constraintlayout.widget.ConstraintLayout-->
+</LinearLayout>

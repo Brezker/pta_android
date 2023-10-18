@@ -60,7 +60,6 @@ class SecondFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             json_unidad = it.getString(ARG_PARAM1)
-            Log.i("jackks", json_unidad.toString())
             param2 = it.getString(ARG_PARAM2)
         }
     }
@@ -85,7 +84,14 @@ class SecondFragment : Fragment() {
 
             // Asignar el ID de la unidad
             id_unidad = objUnidad.id
+            binding.edtNumUnidad.setText(objUnidad.num)
+            binding.editTextHoraSalida.setText(objUnidad.h_salida)
+            binding.editTextHoraLlegada.setText(objUnidad.h_llegada)
+            binding.edtPasaPor.setText(objUnidad.pasa_por)
+        }else{
+            id_unidad = 0
         }
+
 
         binding.editTextHoraSalida.setOnClickListener { showTimePicker(binding.editTextHoraSalida) }
         binding.editTextHoraLlegada.setOnClickListener { showTimePicker(binding.editTextHoraLlegada) }
@@ -135,20 +141,29 @@ class SecondFragment : Fragment() {
     }
     fun guardarUnidad(){
 
-        val client =   OkHttpClient()
+        if(binding.edtNumUnidad.text.toString() == "" ||
+            binding.editTextHoraSalida.text.toString() == ""  ||
+            binding.editTextHoraLlegada.text.toString() == ""  ||
+            binding.edtPasaPor.text.toString() == ""
+            ){
+            return Toast.makeText(context, "Completa los campos faltantes ", Toast.LENGTH_LONG).show()
+        }
 
+
+        val client =   OkHttpClient()
 
 
         val formBody: RequestBody =FormBody.Builder()
             .add("id", id_unidad.toString())
-            .add("num", binding.editTextNumero.text.toString())
+            .add("num", binding.edtNumUnidad.text.toString())
             .add("check", "false")
             .add("act_inact", "true")
             .add("h_salida", binding.editTextHoraSalida.text.toString())
             .add("h_llegada", binding.editTextHoraLlegada.text.toString())
+            .add("pasa_por", binding.edtPasaPor.text.toString())
             .add("id_para", idPara.toString())
             .add("id_ruta", idRuta.toString())
-            .add("nota", "Sin información")
+            .add("nota", "Sin")
             .build()
 
         val request =  Request.Builder()
@@ -260,8 +275,9 @@ class SecondFragment : Fragment() {
                         binding.spinnerRuta.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
                             override fun onItemSelected(
                                 adapterView: AdapterView<*>,
-                                view: View?, position:
-                                Int, id: Long) {
+                                view: View?,
+                                position: Int,
+                                id: Long) {
                                 // Cuando se selecciona un elemento, se obtiene el ID de la unidad seleccionada.
                                 val selectedRuta = listaUnidades[position]
                                 idRuta = selectedRuta.id

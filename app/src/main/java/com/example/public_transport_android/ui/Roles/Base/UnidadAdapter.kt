@@ -23,14 +23,14 @@ class UnidadAdapter (private val dataSet: MutableList<Models.Unidad>):
 RecyclerView.Adapter<UnidadAdapter.ViewHolder>(){
 
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val txtIdParada : TextView
-        val txtIntervalo : TextView
-        val txtpasaPor: TextView
+        val txtRutaDestinoBase : TextView
+        val txtpasaPorBase : TextView
+        val txtNumUnidadBase: TextView
 
         init {
-            txtIdParada = view.findViewById(R.id.txtIdParada)
-            txtIntervalo= view.findViewById(R.id.txtIntervalo)
-            txtpasaPor = view.findViewById(R.id.txtpasaPor)
+            txtRutaDestinoBase = view.findViewById(R.id.txtRutaDestinoBase)
+            txtpasaPorBase= view.findViewById(R.id.txtpasaPorBase)
+            txtNumUnidadBase = view.findViewById(R.id.txtNumUnidadBase)
         }
     }
 
@@ -79,43 +79,16 @@ RecyclerView.Adapter<UnidadAdapter.ViewHolder>(){
         }
 
         // Asigna los valores de los datos del dataset a las vistas en el ViewHolder.
-        viewHolder.txtIdParada.text = dataSet[position]?.id_para.toString()
-        viewHolder.txtpasaPor.text = "Pasa Por: ${dataSet[position]?.pasa_por}"
+        viewHolder.txtRutaDestinoBase.text = dataSet[position]?.nombre_ruta
+        viewHolder.txtpasaPorBase.text = "Pasa Por: ${dataSet[position]?.pasa_por}"
+        viewHolder.txtNumUnidadBase.text = "Unidad: ${dataSet[position]?.num}"
 
-        val tiempo_estimado = calcularIntervalo(dataSet[position].h_llegada)
 
-        viewHolder.txtIntervalo.text = "${tiempo_estimado} min."
+
     }
 
     // Devuelve el tamaño del dataset (invocado por el LayoutManager)
     override fun getItemCount() = dataSet.size
 
-    private fun calcularIntervalo(horaLlegada:String):String{
 
-        val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-        val calendar = Calendar.getInstance()
-        val horaActual =  sdf.format(calendar.time)
-
-        try {
-
-            val dateHoraActual = sdf.parse(horaActual)
-            val dateHoraLlegada = sdf.parse(horaLlegada)
-
-            //calcular la diferencia de milisegundos
-//            val diferencia = dateHoraLlegada.time - dateHoraActual.time
-            val diferencia = dateHoraActual.time - dateHoraLlegada.time
-
-            //Calcular las horas, minutos y  segundos
-            val horas = diferencia / 3600000
-            val minutos = (diferencia % 3600000) / 60000
-
-            //Formatear el intervalo de tiempo en formato HH:mm
-            val intervalo = String.format("%02d:%02d", horas, minutos)
-
-            return intervalo
-        }catch (e:ParseException){
-            e.printStackTrace()
-            return  "Error en el calculo del intervalo"
-        }
- }
 }

@@ -25,7 +25,9 @@ class Models {
         var h_salida:String,
         var h_llegada:String,
         var pasa_por:String,
-        var nota:String
+        var nota:String,
+        var nombre_ruta:String,
+        var nombre_parada:String
     )
 
     data class Parada(

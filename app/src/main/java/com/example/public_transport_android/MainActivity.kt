@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.example.public_transport_android.ui.Pasajero.PasajeroMainActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +23,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*btnPasajero.setOnClickListener {
-            val intent = Intent(this, MunicipiosActivity::class.java)
+        btnPasajero.setOnClickListener {
+            val intent = Intent(this, PasajeroMainActivity::class.java)
             startActivity(intent)
-        }*/
+        }
     }
 }

@@ -61,6 +61,7 @@ class SecondFragment : Fragment() {
         arguments?.let {
             json_unidad = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+            Log.i("jack", json_unidad.toString())
         }
     }
     /**Finaliza Prueba**/
@@ -141,17 +142,23 @@ class SecondFragment : Fragment() {
     }
     fun guardarUnidad(){
 
+        var pasPorForm = binding.edtPasaPor.text.toString()
+
         if(binding.edtNumUnidad.text.toString() == "" ||
             binding.editTextHoraSalida.text.toString() == ""  ||
-            binding.editTextHoraLlegada.text.toString() == ""  ||
-            binding.edtPasaPor.text.toString() == ""
+            binding.editTextHoraLlegada.text.toString() == ""
             ){
             return Toast.makeText(context, "Completa los campos faltantes ", Toast.LENGTH_LONG).show()
         }
 
 
-        val client =   OkHttpClient()
+        if (pasPorForm == ""){
+            pasPorForm = "Directo"
+        }else{
+            pasPorForm = binding.edtPasaPor.text.toString()
+        }
 
+        val client =   OkHttpClient()
 
         val formBody: RequestBody =FormBody.Builder()
             .add("id", id_unidad.toString())
@@ -160,7 +167,7 @@ class SecondFragment : Fragment() {
             .add("act_inact", "true")
             .add("h_salida", binding.editTextHoraSalida.text.toString())
             .add("h_llegada", binding.editTextHoraLlegada.text.toString())
-            .add("pasa_por", binding.edtPasaPor.text.toString())
+            .add("pasa_por", pasPorForm)
             .add("id_para", idPara.toString())
             .add("id_ruta", idRuta.toString())
             .add("nota", "Sin")

@@ -36,7 +36,7 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
     private val binding get() = _binding!!
 
 
-    // Define una lista para tus elementos de parada (debes adaptar esto a tus necesidades).
+    // Define una lista para tus elementos de parada.
     private val listaItemsParada = mutableListOf<Models.Unidad>()
     private  lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var adapter: UnidadParadaAdapter

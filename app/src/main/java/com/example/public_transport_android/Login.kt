@@ -5,17 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.example.public_transport_android.databinding.ActivityLoginBinding
 import com.example.public_transport_android.extras.Models
 import com.example.public_transport_android.ui.Roles.Base.HomeBaseActivity
 import com.example.public_transport_android.ui.Roles.Parada.HomeParadaActivity
-import com.example.public_transport_android.ui.gallery.GalleryFragment
-import com.example.public_transport_android.ui.home.HomeFragment
-import com.example.public_transport_android.ui.home.HomeViewModel
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Callback

@@ -30,10 +30,12 @@ class UnidadesPasajeroAdapter (
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         val txtRutaPasajeroUnidades:TextView
         val txtTiempoEstimado: TextView
+        val txtpasaPorBase: TextView
 
         init {
             txtRutaPasajeroUnidades = view.findViewById(R.id.txtRutaPasajero)
             txtTiempoEstimado = view.findViewById(R.id.txtTiempoEstimado)
+            txtpasaPorBase = view.findViewById(R.id.txtpasaPorBase)
         }
     }
 
@@ -53,12 +55,11 @@ class UnidadesPasajeroAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtRutaPasajeroUnidades.text = dataSet[position]?.nombre_ruta
+        holder.txtpasaPorBase.text = dataSet[position]?.pasa_por
 
         val tiempo_estimado = calcularIntervalo(dataSet[position].h_llegada)
 
         holder.txtTiempoEstimado.text = "${tiempo_estimado} min."
-
-
     }
 
     private fun calcularIntervalo(horaLlegada:String):String{

@@ -36,6 +36,13 @@
                 android:text="Min."
                 android:gravity="center"
                 android:id="@+id/txtTiempoEstimado"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/txtpasaPorBase"/>
+
         </LinearLayout>
 
 

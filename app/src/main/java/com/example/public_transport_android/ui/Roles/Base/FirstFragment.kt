@@ -62,7 +62,7 @@ class FirstFragment : Fragment() {
     fun obtenerDatos(){
 
         // Construye la URL para la solicitud.
-        var url = "http://"+ EnvUrl.UrlVal+":8000/api/unidades/base"
+        var url = "https://"+ EnvUrl.UrlVal+"/api/unidades/base"
 
         val request = Request.Builder()
             .url(url)

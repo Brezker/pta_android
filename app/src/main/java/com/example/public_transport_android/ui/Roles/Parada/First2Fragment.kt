@@ -71,7 +71,7 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
 
     private fun obtenerUnidadesParada(){
         // Construye la URL para la solicitud.
-        var url = "http://"+ EnvUrl.UrlVal+":8000/api/unidades/parada"
+        var url = "https://"+ EnvUrl.UrlVal+"/api/unidades/parada"
 
         val request = Request.Builder()
             .url(url)

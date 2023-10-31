@@ -80,7 +80,7 @@ class Second3Fragment : Fragment(), UnidadesPasajeroAdapter.OnConfirmListener {
     }
 
     private fun obtenerParadas(idParada: Int){
-        val url = "http://" + EnvUrl.UrlVal + ":8000/api/unidades/pasajero/$idParada"
+        val url = "https://" + EnvUrl.UrlVal + "/api/unidades/pasajero/$idParada"
 
         val request = Request.Builder()
             .url(url)

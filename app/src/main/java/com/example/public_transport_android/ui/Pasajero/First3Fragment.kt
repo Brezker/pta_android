@@ -44,7 +44,7 @@ class First3Fragment : Fragment() {
 
     private fun obtenerUnidadesPasajero(){
         // Construye la URL para la solicitud.
-        var url = "http://"+ EnvUrl.UrlVal+":8000/api/paradas"
+        var url = "https://"+ EnvUrl.UrlVal+"/api/paradas"
 
         val request = Request.Builder()
             .url(url)

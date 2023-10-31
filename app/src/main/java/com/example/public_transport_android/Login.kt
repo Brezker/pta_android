@@ -56,7 +56,7 @@ class Login : AppCompatActivity() {
 
         val request = Request.Builder()
             //.url("http://yourip:8000/api/login")
-            .url("http://"+EnvUrl.UrlVal+":8000/api/login")
+            .url("https://"+EnvUrl.UrlVal+"/api/login")
             .post(formBody)
             .build()
         client.newCall(request).enqueue(object : Callback {

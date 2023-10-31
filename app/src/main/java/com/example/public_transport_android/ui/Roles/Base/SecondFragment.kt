@@ -174,7 +174,7 @@ class SecondFragment : Fragment() {
             .build()
 
         val request =  Request.Builder()
-            .url("http://"+EnvUrl.UrlVal+":8000/api/unidad")
+            .url("https://"+EnvUrl.UrlVal+"/api/unidad")
             .post(formBody)
             .build()
 

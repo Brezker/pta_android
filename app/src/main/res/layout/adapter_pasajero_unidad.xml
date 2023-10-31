@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#0DFFFFFF"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="#FFFFFF">
 
 
-
-            <TextView
-                android:id="@+id/txtNombreParadaPasajero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:text="Parada"/>
+        <TextView
+            android:id="@+id/txtNombreParadaPasajero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:height="40dp"
+            android:gravity="center"
+            android:text="Parada"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="#FFFFFF" />
 
 
     </com.google.android.material.card.MaterialCardView>

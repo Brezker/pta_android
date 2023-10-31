@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">public_transport_android</string>
+    <string name="app_name">PTA</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -13,8 +13,12 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_home_base">HomeBaseActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="checador_base_first">Unidades</string>
+    <string name="checador_base_second">Agregar nueva unidad</string>
+    <string name="pasajero_first">Selecciona tu ubicación aproximada</string>
+    <string name="pasajero_second">Unidades</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="checador_prim_label">Unidades</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

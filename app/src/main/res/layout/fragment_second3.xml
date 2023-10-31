@@ -9,8 +9,9 @@
     android:id="@+id/swipeRefreshLayoutPasajero">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDatosUnidadesPasajero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rvDatosUnidadesPasajero"/>
+        android:background="@drawable/background_gradient" />
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

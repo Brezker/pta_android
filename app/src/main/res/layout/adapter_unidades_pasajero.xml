@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:id="@+id/card">
+        app:cardBackgroundColor="#0FFFFFFF"
+        app:strokeColor="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,31 +20,34 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtRutaPasajero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Ruta"
-                android:gravity="center"
-                android:id="@+id/txtRutaPasajero"/>
+                android:textColor="@color/white" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Tiempo estimado: "
-                android:gravity="center"
-                />
+                android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/txtTiempoEstimado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Min."
-                android:gravity="center"
-                android:id="@+id/txtTiempoEstimado"/>
+                android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/txtpasaPorBase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:id="@+id/txtpasaPorBase"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

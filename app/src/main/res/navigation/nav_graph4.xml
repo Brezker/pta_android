@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/First2Fragment"
         android:name="com.example.public_transport_android.ui.Roles.Parada.First2Fragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/checador_base_first"
         tools:layout="@layout/fragment_first2">
 
         <action

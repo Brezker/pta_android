@@ -30,7 +30,7 @@
         android:drawableStart="@android:drawable/ic_lock_idle_charging"
         android:drawablePadding="6dp"
         android:drawableTint="#FFFFFF"
-        android:hint="Nombre"
+        android:hint="Correo electrónico"
         android:paddingRight="20dp"
         android:textColorHighlight="#FFFFFF"
         android:textColorLink="#FFFFFF"

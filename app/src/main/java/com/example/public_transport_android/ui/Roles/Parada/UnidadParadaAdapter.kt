@@ -127,8 +127,8 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
 
 
         viewHolder.txtNumUnidad.text = "Num. Unidad: ${dataSet[position]?.num}"
-        viewHolder.txtH_Salida.text = "Hora Salida: ${dataSet[position]?.h_salida}"
-        viewHolder.txtH_Llegada.text = "Hora LLegada: ${dataSet[position]?.h_llegada}"
+        viewHolder.txtH_Salida.text = "Hora de Salida: ${dataSet[position]?.h_salida}"
+        viewHolder.txtH_Llegada.text = "Hora de Llegada: ${dataSet[position]?.h_llegada}"
     }
 
     override fun getItemCount() = dataSet.size

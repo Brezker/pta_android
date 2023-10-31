@@ -1,172 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/background_gradient"
     android:orientation="vertical"
     tools:context=".SecondFragment">
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:padding="15dp">
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ruta:"
-            android:textSize="20sp"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerRuta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:backgroundTint="@color/white"
+            android:popupBackground="@color/white" />
     </LinearLayout>
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
             android:text="Parada:"
+            android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerParada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:prompt="@color/white"
+            android:backgroundTint="@color/white" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Número de Unidad:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edtNumUnidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:hint="Ingrese número de la unidad"
-            />
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="@color/white" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hora de Salida:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/editTextHoraSalida"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese hora de Salida"
+            android:backgroundTint="@color/white"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
+            android:hint="Ingrese hora de Salida"
             android:inputType="none"
-            android:onClick="showTimePicker"/>
+            android:onClick="showTimePicker"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hora de Llegada:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextHoraLlegada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese hora de Llegada"
+            android:backgroundTint="@color/white"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
+            android:hint="Ingrese hora de Llegada"
             android:inputType="none"
             android:onClick="showTimePicker"
-        />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pasa Por:"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/edtPasaPor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:hint="Ingrese por donde pasa la unidad"
-            />
-
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
 
     </LinearLayout>
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddUnidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_add_location_24"
+        android:layout_gravity="end"
         android:layout_marginTop="35dp"
 
-        android:layout_gravity="end"/>
-
+        android:src="@drawable/save"
+        app:backgroundTint="#BBDEFB" />
 
 
     <!--Button

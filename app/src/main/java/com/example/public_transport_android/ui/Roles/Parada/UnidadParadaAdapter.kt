@@ -104,7 +104,7 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
                     .build()
 
                 val request = Request.Builder()
-                    .url("http://"+ EnvUrl.UrlVal+":8000/api/unidad")
+                    .url("https://"+EnvUrl.UrlVal+"/api/unidad")
                     .post(formBody)
                     .build()
 
@@ -115,6 +115,8 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
 
                     override fun onResponse(call: Call, response: Response) {
                         var respuesta = response.body?.string()
+                        Log.i("jackk",respuesta.toString())
+
 
                     }
 

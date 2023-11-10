@@ -1,10 +1,12 @@
 package com.example.public_transport_android.ui.Roles.Base
 
+import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.example.public_transport_android.EnvUrl
@@ -93,6 +96,15 @@ class SecondFragment : Fragment() {
             id_unidad = 0
         }
 
+        val deleteButton = binding.btndeleteUnidad
+
+        if (id_unidad == 0){
+            deleteButton.visibility  = View.GONE
+        }else{
+            deleteButton.visibility = View.VISIBLE
+            deleteButton.isEnabled = id_unidad !=0
+        }
+
 
         binding.editTextHoraSalida.setOnClickListener { showTimePicker(binding.editTextHoraSalida) }
         binding.editTextHoraLlegada.setOnClickListener { showTimePicker(binding.editTextHoraLlegada) }
@@ -100,6 +112,10 @@ class SecondFragment : Fragment() {
 
         binding.btnAddUnidad.setOnClickListener {
             guardarUnidad()
+        }
+
+        binding.btndeleteUnidad.setOnClickListener{
+            deleteUnidadBase()
         }
 
         return view
@@ -139,6 +155,56 @@ class SecondFragment : Fragment() {
         )
 
         timePickerDialog.show()
+    }
+
+    private fun deleteUnidadBase(){
+
+        if(id_unidad != 0) {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Confirmación ELIMINAR")
+            builder.setMessage("¿Estás seguro que deseas eliminar este registro?")
+            builder.setNegativeButton("Cancelar") { dialog, wich -> dialog.dismiss() }
+
+            builder.setPositiveButton("Confirmar") { dialog, wich ->
+
+                Log.i("jackk", id_unidad.toString())
+
+                val client = OkHttpClient()
+
+                val formBody: RequestBody = FormBody.Builder()
+                    .add("id", id_unidad.toString())
+                    .build()
+
+                val request = Request.Builder()
+                    .url("https://" + EnvUrl.UrlVal + "/api/unidad/delete")
+                    .post(formBody)
+                    .build()
+
+                client.newCall(request).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        activity?.runOnUiThread {
+                            // Mostrar un mensaje de error en la interfaz de usuario
+                            Toast.makeText(
+                                context,
+                                "Ocurrió un error: " + e.message,
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        activity?.runOnUiThread {
+                            Toast.makeText(context, "Unidad eliminada con éxito", Toast.LENGTH_LONG).show()
+                            activity?.onBackPressed()
+                        }
+                    }
+                })
+
+                dialog.dismiss()
+            }
+
+            builder.show()
+        }
     }
     fun guardarUnidad(){
 
@@ -189,6 +255,7 @@ class SecondFragment : Fragment() {
                 var respuesta = response.body?.string()
                 Log.i("jackk", respuesta.toString())
                 activity?.runOnUiThread {
+                    Toast.makeText(context, "Unidad registrada con éxito", Toast.LENGTH_LONG).show()
                     activity?.onBackPressed()
                 }
             }
@@ -198,8 +265,8 @@ class SecondFragment : Fragment() {
     // Función para obtener la lista de rutas
     private fun obtenerRuta(){
         // Se construye la URL para obtener datos de rutas.
-        val url = "http://" + EnvUrl.UrlVal + ":8000/api/rutas"
-
+        //val url = "http://" + EnvUrl.UrlVal + ":8000/api/rutas"
+        val url = "https://"+EnvUrl.UrlVal+"/api/rutas"
         // Se crea una solicitud HTTP GET utilizando OkHttp.
         val request = Request.Builder().url(url).get().build()
         val client = OkHttpClient()
@@ -302,7 +369,8 @@ class SecondFragment : Fragment() {
 
     private fun obtenerParadas(){
         // Se construye la URL para obtener datos de paradas.
-        val url = "http://" + EnvUrl.UrlVal + ":8000/api/paradas"
+        val url = "https://"+EnvUrl.UrlVal+"/api/paradas"
+        Log.i("jack", url)
 
         // Se crea una solicitud HTTP GET utilizando OkHttp.
         val request = Request.Builder().url(url).get().build()

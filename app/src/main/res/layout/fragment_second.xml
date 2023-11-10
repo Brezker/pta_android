@@ -173,15 +173,37 @@
     </LinearLayout>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddUnidad"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
 
-        android:src="@drawable/save"
-        app:backgroundTint="#BBDEFB" />
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/btndeleteUnidad"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_marginTop="35dp"
+    android:layout_marginLeft="75dp"
+    android:layout_marginRight="100dp"
+    android:enabled="false"
+    android:visibility="invisible"
+    android:src="@drawable/delete"
+    android:backgroundTint="#BBDEFB"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAddUnidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="35dp"
+android:layout_marginLeft="50dp"
+            android:src="@drawable/save"
+            app:backgroundTint="#BBDEFB" />
+
+    </LinearLayout>
+
+
 
 
     <!--Button

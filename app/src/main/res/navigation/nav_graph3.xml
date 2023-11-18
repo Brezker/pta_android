@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.public_transport_android.ui.Roles.Base.FirstFragment"
+        android:name="com.brezker.public_transport_android.ui.Roles.Base.FirstFragment"
         android:label="@string/checador_base_first"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.public_transport_android.ui.Roles.Base.SecondFragment"
+        android:name="com.brezker.public_transport_android.ui.Roles.Base.SecondFragment"
         android:label="@string/checador_base_second"
         tools:layout="@layout/fragment_second">
 

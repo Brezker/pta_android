@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/First3Fragment"
-        android:name="com.example.public_transport_android.ui.Pasajero.First3Fragment"
+        android:name="com.brezker.public_transport_android.ui.Pasajero.First3Fragment"
         android:label="@string/pasajero_first"
         tools:layout="@layout/fragment_first3">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/Second3Fragment"
-        android:name="com.example.public_transport_android.ui.Pasajero.Second3Fragment"
+        android:name="com.brezker.public_transport_android.ui.Pasajero.Second3Fragment"
         android:label="@string/pasajero_second"
         tools:layout="@layout/fragment_second3">
 

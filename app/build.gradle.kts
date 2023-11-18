@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.public_transport_android"
+    namespace = "com.brezker.public_transport_android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.public_transport_android"
+        applicationId = "com.brezker.public_transport_android"
         minSdk = 28
         targetSdk = 33
         versionCode = 1

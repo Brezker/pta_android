@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.public_transport_android.EnvUrl
@@ -26,24 +25,26 @@ import java.io.IOException
 class UnidadParadaAdapter(
     private val dataSet: MutableList<Models.Unidad>,
     private val confirmListener: OnConfirmListener
-):
-RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
+) :
+    RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>() {
 
-    interface OnConfirmListener{
+    interface OnConfirmListener {
         fun onConfirmAction()
     }
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val txtNumUnidad: TextView
         val txtH_Salida: TextView
         val txtH_Llegada: TextView
-        val btnCheck : Button
-         init {
-             txtNumUnidad = view.findViewById(R.id.txtNumUnidadParada)
-             txtH_Llegada = view.findViewById(R.id.txtH_LlegadaParada)
-             txtH_Salida =  view.findViewById(R.id.txtH_SalidaParada)
-             btnCheck =  view.findViewById(R.id.btnCheck)
-         }
+        val btnCheck: Button
+
+        init {
+            txtNumUnidad = view.findViewById(R.id.txtNumUnidadParada)
+            txtH_Llegada = view.findViewById(R.id.txtH_LlegadaParada)
+            txtH_Salida = view.findViewById(R.id.txtH_SalidaParada)
+            btnCheck = view.findViewById(R.id.btnCheck)
+        }
     }
 
     var mRecyclerViewParada: RecyclerView? = null
@@ -71,9 +72,10 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         // Configura un click listener en el elemento de la vista para navegar a otra pantalla.
-        viewHolder.btnCheck.setOnClickListener{
+        viewHolder.btnCheck.setOnClickListener {
 
-            val builder = AlertDialog.Builder(viewHolder.itemView.context) // Declarar AlertDialog.Builder
+            val builder =
+                AlertDialog.Builder(viewHolder.itemView.context) // Declarar AlertDialog.Builder
             builder.setTitle("Confirmación")
             builder.setMessage("¿Estás seguro de marcar como pasada esta unidad?")
             // Agregar el botón "Cancelar"
@@ -84,11 +86,11 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
 
             builder.setPositiveButton("Confirmar") { dialog, which ->
 
-                var objGson =  Gson()
+                var objGson = Gson()
                 var json_unidad = objGson.toJson(dataSet[position])
                 val bundle = bundleOf("json_unidad" to json_unidad)
 
-                val  client = OkHttpClient()
+                val client = OkHttpClient()
 
                 val formBody: RequestBody = FormBody.Builder()
                     .add("id", dataSet[position]?.id.toString())
@@ -104,18 +106,18 @@ RecyclerView.Adapter<UnidadParadaAdapter.ViewHolder>(){
                     .build()
 
                 val request = Request.Builder()
-                    .url("https://"+EnvUrl.UrlVal+"/api/unidad")
+                    .url("https://" + EnvUrl.UrlVal + "/api/unidad")
                     .post(formBody)
                     .build()
 
-                client.newCall(request).enqueue(object : Callback{
+                client.newCall(request).enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {
                         Log.i("jackk", e.message.toString())
                     }
 
                     override fun onResponse(call: Call, response: Response) {
                         var respuesta = response.body?.string()
-                        Log.i("jackk",respuesta.toString())
+                        Log.i("jackk", respuesta.toString())
 
 
                     }

@@ -1,11 +1,11 @@
 package com.example.public_transport_android.ui.Pasajero
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.public_transport_android.EnvUrl
 import com.example.public_transport_android.databinding.FragmentFirst3Binding
@@ -34,7 +34,7 @@ class First3Fragment : Fragment() {
 
         // Infla la vista definida en el archivo XML.
         _binding = FragmentFirst3Binding.inflate(inflater, container, false)
-        val root:View  = binding.root
+        val root: View = binding.root
 
         obtenerUnidadesPasajero()
 
@@ -42,9 +42,9 @@ class First3Fragment : Fragment() {
 
     }
 
-    private fun obtenerUnidadesPasajero(){
+    private fun obtenerUnidadesPasajero() {
         // Construye la URL para la solicitud.
-        var url = "https://"+ EnvUrl.UrlVal+"/api/paradas"
+        var url = "https://" + EnvUrl.UrlVal + "/api/paradas"
 
         val request = Request.Builder()
             .url(url)
@@ -52,16 +52,20 @@ class First3Fragment : Fragment() {
             .get()
             .build()
 
-        val client= OkHttpClient()
-        val gson  = Gson()
+        val client = OkHttpClient()
+        val gson = Gson()
 
 
         // Realiza la solicitud HTTP de forma asíncrona.
-        client.newCall(request).enqueue(object :  Callback{
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // Muestra un mensaje de error en el contexto de la actividad.
                 activity?.runOnUiThread {
-                    Toast.makeText(context, "Ocurrió un error: " + e.message.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                        context,
+                        "Ocurrió un error: " + e.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
 
@@ -72,7 +76,8 @@ class First3Fragment : Fragment() {
                 //Actualizar la  vista con los datos recibidos desde la petición
                 activity?.runOnUiThread {
                     //Procesamiento  de respuesta recibida
-                    var listaItems = gson.fromJson(respuestaPasajero, Array<Models.Parada>::class.java)
+                    var listaItems =
+                        gson.fromJson(respuestaPasajero, Array<Models.Parada>::class.java)
 
                     //Crear el adaptador perzonalizado llamado UnidadPasajeroAdapter y pasarle la lista de elementos
                     val adapter = PasajeroUnidadAdapter(listaItems.toMutableList())
@@ -84,11 +89,11 @@ class First3Fragment : Fragment() {
     }
 
     /**override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    super.onViewCreated(view, savedInstanceState)
 
-       /** binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_First3Fragment_to_Second3Fragment)
-        }**/
+    /** binding.buttonFirst.setOnClickListener {
+    findNavController().navigate(R.id.action_First3Fragment_to_Second3Fragment)
+    }**/
     }**/
 
     override fun onDestroyView() {

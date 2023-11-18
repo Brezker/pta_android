@@ -1,7 +1,6 @@
 package com.example.public_transport_android.ui.Roles.Parada
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,8 +27,8 @@ class HomeParadaActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         /**binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        .setAction("Action", null).show()
         }**/
     }
 

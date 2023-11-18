@@ -2,10 +2,10 @@ package com.example.public_transport_android
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.public_transport_android.databinding.ActivityLoginBinding
 import com.example.public_transport_android.extras.Models
 import com.example.public_transport_android.ui.Roles.Base.HomeBaseActivity
@@ -21,11 +21,11 @@ import okhttp3.Response
 import java.io.IOException
 
 private lateinit var binding: ActivityLoginBinding
+
 class Login : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
 
         super.onCreate(savedInstanceState)
@@ -35,7 +35,6 @@ class Login : AppCompatActivity() {
         //val btnAccess = findViewById<Button>(R.id.btnAccess)
 
 
-
         binding.btnAccess.setOnClickListener {
             fnLogin()
             //val intent = Intent(this, HomeActivity::class.java)
@@ -43,7 +42,8 @@ class Login : AppCompatActivity() {
         }
         setContentView(view)
     }
-    fun fnLogin(){
+
+    fun fnLogin() {
         //Toast.makeText(baseContext, binding.txtEmail.text, Toast.LENGTH_LONG).show();
         //Toast.makeText(baseContext, binding.edtPassword.text, Toast.LENGTH_LONG).show();
 
@@ -56,14 +56,15 @@ class Login : AppCompatActivity() {
 
         val request = Request.Builder()
             //.url("http://yourip:8000/api/login")
-            .url("https://"+EnvUrl.UrlVal+"/api/login")
+            .url("https://" + EnvUrl.UrlVal + "/api/login")
             .post(formBody)
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread{
+                runOnUiThread {
                     //println(formBody.toString())
-                    Toast.makeText(baseContext, "Error: " + e.message.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(baseContext, "Error: " + e.message.toString(), Toast.LENGTH_LONG)
+                        .show()
                     Log.i("jackko", e.message.toString())
                 }
             }
@@ -81,7 +82,7 @@ class Login : AppCompatActivity() {
                 var objResp = objGson.fromJson(respuesta, Models.RespLogin::class.java)
 
                 // Verificar si el token en el objeto RespLogin está vacío
-                if(objResp.token == ""){
+                if (objResp.token == "") {
 
                     // Si el token está vacío, mostrar un mensaje de error en el hilo principal de la interfaz de usuario
                     runOnUiThread {
@@ -108,15 +109,14 @@ class Login : AppCompatActivity() {
 
 
                     // Verificar el rol del usuario (true o false)
-                    if (userRole == true){
-
+                    if (userRole == true) {
 
 
                         // Si el rol es true, redirigir a la actividad HomeActivity
                         //val intent = Intent(baseContext, HomeActivity::class.java)
                         val intent = Intent(baseContext, HomeBaseActivity::class.java)
                         startActivity(intent)
-                    }else if (userRole == false){
+                    } else if (userRole == false) {
                         val intent = Intent(baseContext, HomeParadaActivity::class.java)
                         startActivity(intent)
                     }

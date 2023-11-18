@@ -1,10 +1,9 @@
 package com.example.public_transport_android
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.public_transport_android.ui.Pasajero.PasajeroMainActivity
 
 class MainActivity : AppCompatActivity() {

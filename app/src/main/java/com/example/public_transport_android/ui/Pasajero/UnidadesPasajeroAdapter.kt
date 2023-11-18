@@ -7,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.public_transport_android.R
 import com.example.public_transport_android.extras.Models
-import com.example.public_transport_android.ui.Roles.Parada.UnidadParadaAdapter
-import com.google.gson.Gson
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -18,17 +16,18 @@ import java.util.Locale
  * Este archivo sirve para imprimir el recycler view de donde nos muestra todas las unidades
  * que  estan por pasar en la parada seleccionada
  * **/
-class UnidadesPasajeroAdapter (
-    private val dataSet:MutableList<Models.Unidad>,
+class UnidadesPasajeroAdapter(
+    private val dataSet: MutableList<Models.Unidad>,
     private val confirmListener: OnConfirmListener
-):
-    RecyclerView.Adapter<UnidadesPasajeroAdapter.ViewHolder>(){
+) :
+    RecyclerView.Adapter<UnidadesPasajeroAdapter.ViewHolder>() {
 
-    interface OnConfirmListener{
+    interface OnConfirmListener {
         fun onConfirmAction()
     }
-    class ViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val txtRutaPasajeroUnidades:TextView
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtRutaPasajeroUnidades: TextView
         val txtTiempoEstimado: TextView
         val txtpasaPorBase: TextView
 
@@ -62,11 +61,11 @@ class UnidadesPasajeroAdapter (
         holder.txtTiempoEstimado.text = "${tiempo_estimado} min."
     }
 
-    private fun calcularIntervalo(horaLlegada:String):String{
+    private fun calcularIntervalo(horaLlegada: String): String {
 
         val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
         val calendar = Calendar.getInstance()
-        val horaActual =  sdf.format(calendar.time)
+        val horaActual = sdf.format(calendar.time)
 
         try {
 
@@ -84,9 +83,9 @@ class UnidadesPasajeroAdapter (
             val intervalo = String.format("%02d:%02d", horas, minutos)
 
             return intervalo
-        }catch (e: ParseException){
+        } catch (e: ParseException) {
             e.printStackTrace()
-            return  "Error en el calculo del intervalo"
+            return "Error en el calculo del intervalo"
         }
     }
 

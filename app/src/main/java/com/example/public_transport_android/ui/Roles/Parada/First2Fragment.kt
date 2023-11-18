@@ -1,19 +1,17 @@
 package com.example.public_transport_android.ui.Roles.Parada
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.public_transport_android.EnvUrl
 import com.example.public_transport_android.R
 import com.example.public_transport_android.databinding.FragmentFirst2Binding
 import com.example.public_transport_android.extras.Models
-import com.example.public_transport_android.ui.Roles.Base.UnidadAdapter
 import com.google.gson.Gson
 import okhttp3.Call
 import okhttp3.Callback
@@ -26,11 +24,12 @@ import java.io.IOException
  * Este archivo define la clase First2Fragment, que es un fragmento de android.
  * Se encarga de mostrar una lista de unidades y gestionar la navegación
  * **/
-class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
+class First2Fragment : Fragment(), UnidadParadaAdapter.OnConfirmListener {
 
 
     // La siguiente propiedad es utilizada para gestionar la vista del fragmento.
     private var _binding: FragmentFirst2Binding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -38,7 +37,7 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
 
     // Define una lista para tus elementos de parada.
     private val listaItemsParada = mutableListOf<Models.Unidad>()
-    private  lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var adapter: UnidadParadaAdapter
 
     // Método llamado al crear la vista del fragmento.
@@ -69,9 +68,9 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
         return root
     }
 
-    private fun obtenerUnidadesParada(){
+    private fun obtenerUnidadesParada() {
         // Construye la URL para la solicitud.
-        var url = "https://"+ EnvUrl.UrlVal+"/api/unidades/parada"
+        var url = "https://" + EnvUrl.UrlVal + "/api/unidades/parada"
 
         val request = Request.Builder()
             .url(url)
@@ -87,7 +86,11 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
             override fun onFailure(call: Call, e: IOException) {
                 // Muestra un mensaje de error en el contexto de la actividad.
                 activity?.runOnUiThread {
-                    Toast.makeText(context, "Ocurrió un error: " + e.message.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                        context,
+                        "Ocurrió un error: " + e.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show();
                     swipeRefreshLayout.isRefreshing = false
                 }
             }
@@ -95,7 +98,7 @@ class First2Fragment : Fragment(),UnidadParadaAdapter.OnConfirmListener {
 
             override fun onResponse(call: Call, response: Response) {
                 // Procesa la respuesta de la solicitud HTTP.
-                var respuesta  = response.body?.string()
+                var respuesta = response.body?.string()
                 listaItemsParada.clear() // Limpia la lista antes de cargar los nuevos datos.
                 listaItemsParada.addAll(gson.fromJson(respuesta, Array<Models.Unidad>::class.java))
 

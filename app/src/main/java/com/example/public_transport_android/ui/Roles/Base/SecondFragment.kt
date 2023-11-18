@@ -3,20 +3,16 @@ package com.example.public_transport_android.ui.Roles.Base
 import android.app.AlertDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.public_transport_android.EnvUrl
 import com.example.public_transport_android.databinding.FragmentSecondBinding
 import com.example.public_transport_android.extras.Models
@@ -38,20 +34,19 @@ private const val ARG_PARAM2 = "param2"
 
 // Variables globales
 private var id_unidad: Int = 0
-private var idRuta: Int? =  null
-private var idPara:Int? =  null
-private  lateinit var binding: FragmentSecondBinding
+private var idRuta: Int? = null
+private var idPara: Int? = null
+private lateinit var binding: FragmentSecondBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 
 
-
 class SecondFragment : Fragment() {
 
-    private  var json_unidad:String? =  null
-    private var param2:String? = null
+    private var json_unidad: String? = null
+    private var param2: String? = null
     private var _binding: FragmentSecondBinding? = null
 
     private val binding get() = _binding!!
@@ -67,6 +62,7 @@ class SecondFragment : Fragment() {
             Log.i("jack", json_unidad.toString())
         }
     }
+
     /**Finaliza Prueba**/
 
     // Método llamado al crear la vista del fragmento
@@ -82,7 +78,7 @@ class SecondFragment : Fragment() {
         obtenerParadas()
 
         // Verificar si json_unidad no es nulo
-        if (json_unidad != null){
+        if (json_unidad != null) {
             var gson = Gson()
             var objUnidad = gson.fromJson(json_unidad, Models.Unidad::class.java)
 
@@ -92,17 +88,17 @@ class SecondFragment : Fragment() {
             binding.editTextHoraSalida.setText(objUnidad.h_salida)
             binding.editTextHoraLlegada.setText(objUnidad.h_llegada)
             binding.edtPasaPor.setText(objUnidad.pasa_por)
-        }else{
+        } else {
             id_unidad = 0
         }
 
         val deleteButton = binding.btndeleteUnidad
 
-        if (id_unidad == 0){
-            deleteButton.visibility  = View.GONE
-        }else{
+        if (id_unidad == 0) {
+            deleteButton.visibility = View.GONE
+        } else {
             deleteButton.visibility = View.VISIBLE
-            deleteButton.isEnabled = id_unidad !=0
+            deleteButton.isEnabled = id_unidad != 0
         }
 
 
@@ -114,7 +110,7 @@ class SecondFragment : Fragment() {
             guardarUnidad()
         }
 
-        binding.btndeleteUnidad.setOnClickListener{
+        binding.btndeleteUnidad.setOnClickListener {
             deleteUnidadBase()
         }
 
@@ -124,18 +120,16 @@ class SecondFragment : Fragment() {
 
     /**Comentado por prueba
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    super.onViewCreated(view, savedInstanceState)
 
 
 
 
-        /**binding.buttonSecond.setOnClickListener {
-        findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }**/
+    /**binding.buttonSecond.setOnClickListener {
+    findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+    }**/
     }
-    **/
-
-
+     **/
 
 
     private fun showTimePicker(view: EditText) {
@@ -157,9 +151,9 @@ class SecondFragment : Fragment() {
         timePickerDialog.show()
     }
 
-    private fun deleteUnidadBase(){
+    private fun deleteUnidadBase() {
 
-        if(id_unidad != 0) {
+        if (id_unidad != 0) {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Confirmación ELIMINAR")
             builder.setMessage("¿Estás seguro que deseas eliminar este registro?")
@@ -194,7 +188,8 @@ class SecondFragment : Fragment() {
 
                     override fun onResponse(call: Call, response: Response) {
                         activity?.runOnUiThread {
-                            Toast.makeText(context, "Unidad eliminada con éxito", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Unidad eliminada con éxito", Toast.LENGTH_LONG)
+                                .show()
                             activity?.onBackPressed()
                         }
                     }
@@ -206,27 +201,29 @@ class SecondFragment : Fragment() {
             builder.show()
         }
     }
-    fun guardarUnidad(){
+
+    fun guardarUnidad() {
 
         var pasPorForm = binding.edtPasaPor.text.toString()
 
-        if(binding.edtNumUnidad.text.toString() == "" ||
-            binding.editTextHoraSalida.text.toString() == ""  ||
+        if (binding.edtNumUnidad.text.toString() == "" ||
+            binding.editTextHoraSalida.text.toString() == "" ||
             binding.editTextHoraLlegada.text.toString() == ""
-            ){
-            return Toast.makeText(context, "Completa los campos faltantes ", Toast.LENGTH_LONG).show()
+        ) {
+            return Toast.makeText(context, "Completa los campos faltantes ", Toast.LENGTH_LONG)
+                .show()
         }
 
 
-        if (pasPorForm == ""){
+        if (pasPorForm == "") {
             pasPorForm = "Directo"
-        }else{
+        } else {
             pasPorForm = binding.edtPasaPor.text.toString()
         }
 
-        val client =   OkHttpClient()
+        val client = OkHttpClient()
 
-        val formBody: RequestBody =FormBody.Builder()
+        val formBody: RequestBody = FormBody.Builder()
             .add("id", id_unidad.toString())
             .add("num", binding.edtNumUnidad.text.toString())
             .add("check", "false")
@@ -239,15 +236,16 @@ class SecondFragment : Fragment() {
             .add("nota", "Sin")
             .build()
 
-        val request =  Request.Builder()
-            .url("https://"+EnvUrl.UrlVal+"/api/unidad")
+        val request = Request.Builder()
+            .url("https://" + EnvUrl.UrlVal + "/api/unidad")
             .post(formBody)
             .build()
 
-        client.newCall(request).enqueue(object : Callback{
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 activity?.runOnUiThread {
-                    Toast.makeText(context, "Ocurrio un error: " + e.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Ocurrio un error: " + e.message, Toast.LENGTH_LONG)
+                        .show()
                 }
             }
 
@@ -263,10 +261,10 @@ class SecondFragment : Fragment() {
     }
 
     // Función para obtener la lista de rutas
-    private fun obtenerRuta(){
+    private fun obtenerRuta() {
         // Se construye la URL para obtener datos de rutas.
         //val url = "http://" + EnvUrl.UrlVal + ":8000/api/rutas"
-        val url = "https://"+EnvUrl.UrlVal+"/api/rutas"
+        val url = "https://" + EnvUrl.UrlVal + "/api/rutas"
         // Se crea una solicitud HTTP GET utilizando OkHttp.
         val request = Request.Builder().url(url).get().build()
         val client = OkHttpClient()
@@ -274,10 +272,10 @@ class SecondFragment : Fragment() {
 
         // Se envía la solicitud HTTP asíncronamente y se define cómo manejar las respuestas y
         // los errores.
-        client.newCall(request).enqueue(object : Callback{
+        client.newCall(request).enqueue(object : Callback {
             // Este método se ejecuta si la solicitud HTTP falla.
             override fun onFailure(call: Call, e: IOException) {
-                Log.i("jackk",e.message.toString())
+                Log.i("jackk", e.message.toString())
             }
 
             // Este método se ejecuta cuando se recibe una respuesta exitosa de la solicitud HTTP.
@@ -289,7 +287,7 @@ class SecondFragment : Fragment() {
                 // Models.Enfermedad utilizando Gson.
                 val listaUnidades = objGson.fromJson(respuesta, Array<Models.Ruta>::class.java)
 
-                if (listaUnidades != null){
+                if (listaUnidades != null) {
                     var selectedPosition = -1
 
                     // Se crea un adaptador personalizado para el Spinner que muestra los datos de enfermedades.
@@ -297,22 +295,30 @@ class SecondFragment : Fragment() {
                         requireActivity().baseContext,
                         android.R.layout.simple_spinner_item,
                         listaUnidades
-                    ){
+                    ) {
 
                         // Este método se utiliza para personalizar la vista de los elementos
                         // seleccionados en el Spinner.
-                        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        override fun getView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
 
                             val view = super.getView(position, convertView, parent)
                             val ruta = listaUnidades[position]
-                            val displayText =  "ID Ruta: ${ruta.id} : ${ruta.nom_ruta}"
+                            val displayText = "ID Ruta: ${ruta.id} : ${ruta.nom_ruta}"
                             (view as TextView).text = displayText
                             return view
                         }
 
                         // Este método se utiliza para personalizar la vista de los elementos
                         // en la lista desplegable del Spinner.
-                        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        override fun getDropDownView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
                             val view = super.getDropDownView(position, convertView, parent)
                             val ruta = listaUnidades[position]
                             val displayText = ruta.nom_ruta
@@ -326,17 +332,17 @@ class SecondFragment : Fragment() {
 
                     // Se actualiza el Spinner en la interfaz de usuario en el hilo principal.
                     activity?.runOnUiThread {
-                        binding.spinnerRuta.adapter =  adapter
+                        binding.spinnerRuta.adapter = adapter
 
                         // Se obtiene un objeto Unidad a partir de un JSON (json_cita).
-                        var gson =  Gson()
+                        var gson = Gson()
                         var objUnidad = gson.fromJson(json_unidad, Models.Unidad::class.java)
 
                         // Si se ha obtenido un objeto Cita, se busca la posición de la unidad
                         // correspondiente en el Spinner.
-                        if (json_unidad != null){
-                            for (i in listaUnidades.indices){
-                                if (objUnidad.id_ruta.toString() == listaUnidades[i].id.toString()){
+                        if (json_unidad != null) {
+                            for (i in listaUnidades.indices) {
+                                if (objUnidad.id_ruta.toString() == listaUnidades[i].id.toString()) {
                                     selectedPosition = i
                                     binding.spinnerRuta.setSelection(selectedPosition)
                                     break
@@ -346,20 +352,23 @@ class SecondFragment : Fragment() {
 
                         // Se establece un listener para el Spinner que se ejecuta cuando se selecciona
                         // un elemento.
-                        binding.spinnerRuta.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-                            override fun onItemSelected(
-                                adapterView: AdapterView<*>,
-                                view: View?,
-                                position: Int,
-                                id: Long) {
-                                // Cuando se selecciona un elemento, se obtiene el ID de la unidad seleccionada.
-                                val selectedRuta = listaUnidades[position]
-                                idRuta = selectedRuta.id
-                            }
-                            override fun onNothingSelected(adapterView: AdapterView<*>) {
+                        binding.spinnerRuta.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    adapterView: AdapterView<*>,
+                                    view: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+                                    // Cuando se selecciona un elemento, se obtiene el ID de la unidad seleccionada.
+                                    val selectedRuta = listaUnidades[position]
+                                    idRuta = selectedRuta.id
+                                }
 
+                                override fun onNothingSelected(adapterView: AdapterView<*>) {
+
+                                }
                             }
-                        }
                     }
 
                 }
@@ -367,9 +376,9 @@ class SecondFragment : Fragment() {
         })
     }
 
-    private fun obtenerParadas(){
+    private fun obtenerParadas() {
         // Se construye la URL para obtener datos de paradas.
-        val url = "https://"+EnvUrl.UrlVal+"/api/paradas"
+        val url = "https://" + EnvUrl.UrlVal + "/api/paradas"
         Log.i("jack", url)
 
         // Se crea una solicitud HTTP GET utilizando OkHttp.
@@ -393,33 +402,41 @@ class SecondFragment : Fragment() {
                 // utilizando Gson.
                 val listaParadas = objGson.fromJson(respuesta, Array<Models.Parada>::class.java)
 
-                if (listaParadas != null){
+                if (listaParadas != null) {
                     var selectedPosition = -1
 
-                // Se crea un adaptador personalizado para el Spinner que muestra los datos de
-                // paradas.
-                    val adapter = object:ArrayAdapter<Models.Parada>(
+                    // Se crea un adaptador personalizado para el Spinner que muestra los datos de
+                    // paradas.
+                    val adapter = object : ArrayAdapter<Models.Parada>(
                         requireActivity().baseContext,
                         android.R.layout.simple_spinner_item,
                         listaParadas
-                    ){
+                    ) {
                         // Este método se utiliza para personalizar la vista de los elementos
                         // seleccionados en el Spinner.
-                        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        override fun getView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
                             val view = super.getView(position, convertView, parent)
                             val parada = listaParadas[position]
                             val displayText = "ID Para. ${parada.id} : ${parada.nom_par}"
-                            (view as TextView).text =  displayText
+                            (view as TextView).text = displayText
                             return view
                         }
 
                         // Este método se utiliza para personalizar la vista de los elementos en
                         // la lista desplegable del Spinner.
-                        override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                        override fun getDropDownView(
+                            position: Int,
+                            convertView: View?,
+                            parent: ViewGroup
+                        ): View {
                             val view = super.getDropDownView(position, convertView, parent)
-                            val parada =  listaParadas[position]
+                            val parada = listaParadas[position]
                             val displayText = "${parada.nom_par}"
-                            (view as TextView).text =  displayText
+                            (view as TextView).text = displayText
                             return view
                         }
                     }
@@ -432,14 +449,14 @@ class SecondFragment : Fragment() {
                         binding.spinnerParada.adapter = adapter
 
                         // Se obtiene un objeto Cita a partir de un JSON (json_unidad).
-                        var gson =  Gson()
-                        var  objUnidad =gson.fromJson(json_unidad, Models.Unidad::class.java)
+                        var gson = Gson()
+                        var objUnidad = gson.fromJson(json_unidad, Models.Unidad::class.java)
 
                         // Si se ha obtenido un objeto Cita, se busca la posición de la
                         // Unidad correspondiente en el Spinner.
-                        if (json_unidad != null){
-                            for (i in listaParadas.indices){
-                                if (objUnidad.id_para.toString() ==  listaParadas[i].id.toString()){
+                        if (json_unidad != null) {
+                            for (i in listaParadas.indices) {
+                                if (objUnidad.id_para.toString() == listaParadas[i].id.toString()) {
                                     selectedPosition = i
                                     binding.spinnerParada.setSelection(selectedPosition)
                                     break
@@ -449,16 +466,22 @@ class SecondFragment : Fragment() {
 
                         // Se establece un listener para el Spinner que se ejecuta cuando se
                         // selecciona un elemento.
-                        binding.spinnerParada.onItemSelectedListener =  object : AdapterView.OnItemSelectedListener{
-                            override fun onItemSelected(adapterView: AdapterView<*>, view: View?, position: Int, id: Long) {
-                                val selectedParada = listaParadas[position]
-                                idPara =  selectedParada.id
-                            }
+                        binding.spinnerParada.onItemSelectedListener =
+                            object : AdapterView.OnItemSelectedListener {
+                                override fun onItemSelected(
+                                    adapterView: AdapterView<*>,
+                                    view: View?,
+                                    position: Int,
+                                    id: Long
+                                ) {
+                                    val selectedParada = listaParadas[position]
+                                    idPara = selectedParada.id
+                                }
 
-                            override fun onNothingSelected(adapterView: AdapterView<*>) {
-                                // Manejar caso de no selección si es necesario
+                                override fun onNothingSelected(adapterView: AdapterView<*>) {
+                                    // Manejar caso de no selección si es necesario
+                                }
                             }
-                        }
                     }
                 }
             }
@@ -470,6 +493,5 @@ class SecondFragment : Fragment() {
         _binding = null
     }
 
-    
 
 }

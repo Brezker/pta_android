@@ -10,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.public_transport_android.R
 import com.example.public_transport_android.extras.Models
 import com.google.gson.Gson
+
 /**
  * Este archivo sirve para imprimir el recycler view de donde nos muestra todas las paradas
  * que  existen en la base de datos
  * **/
-class PasajeroUnidadAdapter (private val dataSet:MutableList<Models.Parada>):
-    RecyclerView.Adapter<PasajeroUnidadAdapter.ViewHolder> (){
+class PasajeroUnidadAdapter(private val dataSet: MutableList<Models.Parada>) :
+    RecyclerView.Adapter<PasajeroUnidadAdapter.ViewHolder>() {
 
-        class ViewHolder(view: View):RecyclerView.ViewHolder(view){
-            val txtNombreParadaPasajero: TextView
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtNombreParadaPasajero: TextView
 
-            init {
-                txtNombreParadaPasajero = view.findViewById(R.id.txtNombreParadaPasajero)
-            }
+        init {
+            txtNombreParadaPasajero = view.findViewById(R.id.txtNombreParadaPasajero)
         }
+    }
 
     var mRecyclerViewPasajero: RecyclerView? = null
 
@@ -41,7 +42,7 @@ class PasajeroUnidadAdapter (private val dataSet:MutableList<Models.Parada>):
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.itemView.setOnClickListener{
+        viewHolder.itemView.setOnClickListener {
             var objGson = Gson()
             var json_parada = objGson.toJson(dataSet[position])
             var navController = Navigation.findNavController(it)

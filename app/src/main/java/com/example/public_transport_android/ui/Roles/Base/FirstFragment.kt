@@ -1,14 +1,11 @@
 package com.example.public_transport_android.ui.Roles.Base
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.public_transport_android.EnvUrl
@@ -46,11 +43,11 @@ class FirstFragment : Fragment() {
 
         // Infla la vista definida en el archivo XML.
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        val root:View  = binding.root
+        val root: View = binding.root
 
         // Configura un OnClickListener para el botón flotante.
-        binding.fabNuevaUnidad.setOnClickListener{
-            var navController =  findNavController()
+        binding.fabNuevaUnidad.setOnClickListener {
+            var navController = findNavController()
             navController.navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
 
@@ -59,10 +56,10 @@ class FirstFragment : Fragment() {
         return root
     }
 
-    fun obtenerDatos(){
+    fun obtenerDatos() {
 
         // Construye la URL para la solicitud.
-        var url = "https://"+ EnvUrl.UrlVal+"/api/unidades/base"
+        var url = "https://" + EnvUrl.UrlVal + "/api/unidades/base"
 
         val request = Request.Builder()
             .url(url)
@@ -70,21 +67,25 @@ class FirstFragment : Fragment() {
             .get()
             .build()
 
-        val client =  OkHttpClient()
-        val gson =  Gson()
+        val client = OkHttpClient()
+        val gson = Gson()
 
         // Realiza la solicitud HTTP de forma asíncrona.
-        client.newCall(request).enqueue(object : Callback{
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 // Muestra un mensaje de error en el contexto de la actividad.
                 activity?.runOnUiThread {
-                    Toast.makeText(context, "Ocurrió un error: " + e.message.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                        context,
+                        "Ocurrió un error: " + e.message.toString(),
+                        Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 // Procesa la respuesta de la solicitud HTTP.
-                var respuesta  =  response.body?.string()
+                var respuesta = response.body?.string()
 
                 // Actualiza la vista en el hilo principal con los datos recibidos.
                 activity?.runOnUiThread {
@@ -93,7 +94,7 @@ class FirstFragment : Fragment() {
 
                     // Se crea un adaptador personalizado llamado "EnfermedadAdapter" y
                     // se le pasa la lista de elementos.
-                    val adapter =  UnidadAdapter(listaItems.toMutableList())
+                    val adapter = UnidadAdapter(listaItems.toMutableList())
 
                     // Se configura el RecyclerView "rvDatosUnidad" con un administrador de diseño lineal.
                     // Esto establece cómo se mostrarán los elementos en la lista.
@@ -110,18 +111,18 @@ class FirstFragment : Fragment() {
 
     /**
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferences = requireActivity().getSharedPreferences("infoUser", Context.MODE_PRIVATE)
-        val userName = sharedPreferences.getString("userName","")
-        val userRole = sharedPreferences.getString("userRole", "")
+    val sharedPreferences = requireActivity().getSharedPreferences("infoUser", Context.MODE_PRIVATE)
+    val userName = sharedPreferences.getString("userName","")
+    val userRole = sharedPreferences.getString("userRole", "")
 
-        val message = "¡Hola , $userName!!"
-        /**binding.txtNameParada.text = message
+    val message = "¡Hola , $userName!!"
+    /**binding.txtNameParada.text = message
 
-        binding.btnAAdir.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }**/
+    binding.btnAAdir.setOnClickListener {
+    findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+    }**/
 
     }**/
 
@@ -129,8 +130,6 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
 
 }

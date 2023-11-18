@@ -1,7 +1,5 @@
 package com.example.public_transport_android.ui.Roles.Base
 
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,24 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.public_transport_android.R
 import com.example.public_transport_android.extras.Models
 import com.google.gson.Gson
-import java.text.DateFormat
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 
-class UnidadAdapter (private val dataSet: MutableList<Models.Unidad>):
-RecyclerView.Adapter<UnidadAdapter.ViewHolder>(){
+class UnidadAdapter(private val dataSet: MutableList<Models.Unidad>) :
+    RecyclerView.Adapter<UnidadAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View):RecyclerView.ViewHolder(view){
-        val txtRutaDestinoBase : TextView
-        val txtpasaPorBase : TextView
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtRutaDestinoBase: TextView
+        val txtpasaPorBase: TextView
         val txtNumUnidadBase: TextView
 
         init {
             txtRutaDestinoBase = view.findViewById(R.id.txtRutaDestinoBase)
-            txtpasaPorBase= view.findViewById(R.id.txtpasaPorBase)
+            txtpasaPorBase = view.findViewById(R.id.txtpasaPorBase)
             txtNumUnidadBase = view.findViewById(R.id.txtNumUnidadBase)
         }
     }
@@ -70,8 +62,8 @@ RecyclerView.Adapter<UnidadAdapter.ViewHolder>(){
     // Rellena el contenido de una vista (invocado por el LayoutManager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // Configura un click listener en el elemento de la vista para navegar a otra pantalla.
-        viewHolder.itemView.setOnClickListener{
-            var objGson =  Gson()
+        viewHolder.itemView.setOnClickListener {
+            var objGson = Gson()
             var json_unidad = objGson.toJson(dataSet[position])
             var navController = Navigation.findNavController(it)
             val bundle = bundleOf("json_unidad" to json_unidad)
@@ -82,7 +74,6 @@ RecyclerView.Adapter<UnidadAdapter.ViewHolder>(){
         viewHolder.txtRutaDestinoBase.text = dataSet[position]?.nombre_ruta
         viewHolder.txtpasaPorBase.text = "Pasa Por: ${dataSet[position]?.pasa_por}"
         viewHolder.txtNumUnidadBase.text = "Unidad: ${dataSet[position]?.num}"
-
 
 
     }

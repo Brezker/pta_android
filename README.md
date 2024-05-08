@@ -5,6 +5,11 @@
 Aplicacion de transporte publico que ofrece al usuario ver el tiempo que tardan en pasar los distintos tranportes por su locacion, ademas de que permite a los 'checadores anotar la informacion de los mismos para su actualizacion en tiempo real.
 La API Laravel la pueden encontrar en [public_transport_api](https://github.com/Brezker/public_transport_api).
 
+## Video demostración
+https://github.com/Brezker/ryzentosh-5-3500x-rx570-b450/assets/38386181/b7bea1e0-566a-41da-8757-2464afd1fd48
+
+[YouTube Video](https://www.youtube.com/watch?v=X4VouSl4a74&t=26s)
+
 ## Installation & updates
 
 `composer create-project codeigniter4/appstarter` then `composer update` whenever

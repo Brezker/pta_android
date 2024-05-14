@@ -10,7 +10,7 @@ https://github.com/Brezker/ryzentosh-5-3500x-rx570-b450/assets/38386181/b7bea1e0
 
 [YouTube Video](https://www.youtube.com/watch?v=X4VouSl4a74&t=26s)
 
-## Installation & updates
+## Instalacion
 
 `composer create-project codeigniter4/appstarter` then `composer update` whenever
 there is a new release of the framework.
